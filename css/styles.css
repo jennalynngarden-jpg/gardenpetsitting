@@ -208,7 +208,7 @@ p { margin: 0; }
   flex: 1 1 260px; max-width: 340px; background: var(--color-bg-card); border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card); overflow: hidden; text-decoration: none; color: inherit;
 }
-.pet-card__photo { aspect-ratio: 340 / 220; object-fit: cover; width: 100%; }
+.pet-card__photo { aspect-ratio: 340 / 220; object-fit: cover; object-position: 50% 15%; width: 100%; }
 .pet-card__body { padding: 20px var(--spacing-lg) var(--spacing-lg); display: grid; gap: var(--spacing-sm); }
 
 /* --------------------------------------------------------------------------
@@ -246,12 +246,12 @@ p { margin: 0; }
 /* Inner-page extras: About, Foster dogs, dog detail pages */
 .feature__inner--top { align-items: start; }
 .feature__text--prose { gap: 20px; justify-items: stretch; }
-.feature__photo--tall { aspect-ratio: 440 / 480; }
+.feature__photo--tall { aspect-ratio: 440 / 480; justify-self: start; }
 .carousel--story { width: 100%; aspect-ratio: 400 / 460; max-width: 400px; justify-self: end; }
 .org-links { display: grid; gap: 12px; justify-items: start; }
 .org-links a, .org-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--color-text-heading); }
 .photo-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-lg); }
-.photo-strip img { width: 100%; aspect-ratio: 341 / 260; object-fit: cover; border-radius: var(--radius-lg); }
+.photo-strip img { width: 100%; aspect-ratio: 341 / 320; object-fit: cover; object-position: 50% 12%; border-radius: var(--radius-lg); }
 .featured { background: var(--color-bg-accent-soft); padding: clamp(40px, 5vw, 56px) 0; }
 
 .row-head { display: flex; justify-content: space-between; align-items: center; gap: var(--spacing-lg); margin-bottom: var(--spacing-lg); }
@@ -265,6 +265,7 @@ p { margin: 0; }
 .card-row { display: flex; gap: var(--spacing-lg); overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 4px 20px; margin: -4px -4px 0; scrollbar-width: none; }
 .card-row::-webkit-scrollbar { display: none; }
 .pet-card--carousel { flex: 0 0 250px; scroll-snap-align: start; max-width: none; }
+.pet-card--carousel .pet-card__photo { aspect-ratio: 250 / 250; }
 
 /* Dog detail page */
 .back-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--color-text-body); text-decoration: underline; margin-bottom: var(--spacing-lg); }
@@ -276,7 +277,7 @@ p { margin: 0; }
 
 .gallery { display: grid; gap: 16px; }
 .gallery__main { position: relative; aspect-ratio: 440 / 400; border-radius: var(--radius-lg); overflow: hidden; background: var(--color-bg-section); }
-.gallery__main img { width: 100%; height: 100%; object-fit: cover; }
+.gallery__main img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
 .gallery__controls { position: absolute; right: 12px; bottom: 12px; display: flex; align-items: center; gap: 6px; }
 .gallery__arrow { width: 28px; height: 28px; border-radius: 50%; border: 0; background: rgba(30, 26, 22, .55); color: var(--cream-50); display: grid; place-items: center; }
 .gallery__arrow .icon { width: 16px; height: 16px; }
@@ -284,7 +285,7 @@ p { margin: 0; }
 .gallery__thumbs { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
 .gallery__thumbs::-webkit-scrollbar { display: none; }
 .gallery__thumb { flex: 0 0 78px; width: 78px; height: 78px; padding: 0; border: 2.5px solid transparent; border-radius: var(--radius-md); overflow: hidden; background: var(--color-bg-section); }
-.gallery__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.gallery__thumb img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; }
 .gallery__thumb.is-active { border-color: var(--color-accent); }
 
 /* Share pills */
