@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Garden Pet Sitting · In-home pet care and dog daycare in South Salinas, CA</title>
-  <meta name="description" content="Georgia has 30 years of pet care experience. In-home visits and dog daycare in South Salinas and the Monterey Bay Area.">
+  <title>Services · Garden Pet Sitting</title>
+  <meta name="description" content="In-home pet visits and dog daycare from Georgia, serving South Salinas, Toro Park, Las Palmas, and Corral de Tierra.">
   <link rel="icon" href="images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +43,7 @@
       <div class="nav-scrim" data-nav-scrim></div>
       <nav class="nav" id="site-nav" aria-label="Main">
         <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
+        <a href="services.html" aria-current="page">Services</a>
         <a href="about.html">About Georgia</a>
         <a href="fosters.html">Foster dogs</a>
         <a class="btn btn--primary" href="#contact" data-open-modal="inquiry">Get in touch</a>
@@ -53,111 +53,75 @@
 
   <main>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero__inner">
-        <div class="hero__text">
-          <h1>Loving care for your pets while you’re away</h1>
-          <p class="body-large">Georgia has 30 years of pet care experience with dogs, cats, birds, and more. Make sure your pets keep their routine and get plenty of extra love while you’re away.</p>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#contact">Get in touch</a>
-            <a class="btn btn--secondary" href="services.html">See services</a>
-          </div>
-        </div>
-
-        <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Photos of Georgia and the dogs">
-          <div class="carousel__slide is-active"><img src="images/hero-georgia.jpg" alt="Georgia smiling with two happy dogs under a blue sky"></div>
-          <div class="carousel__slide"><img src="images/hero-luna-hiking.jpg" alt="Luna the Great Pyrenees hiking on a green hillside"></div>
-          <div class="carousel__slide"><img src="images/hero-trail-trio.jpg" alt="Doc, Summer, and Luna sitting together on a hiking trail"></div>
-          <div class="carousel__dots" data-carousel-dots></div>
-          <button class="carousel__arrow carousel__arrow--prev" data-carousel-prev aria-label="Previous photo"><svg class="icon" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
-          <button class="carousel__arrow carousel__arrow--next" data-carousel-next aria-label="Next photo"><svg class="icon"><use href="#i-arrow"/></svg></button>
-        </div>
+    <!-- Intro -->
+    <section class="page-intro">
+      <div class="container">
+        <h1>Services</h1>
+        <p class="body-large">Every pet and home is different, so every experience is tailored. Georgia has cared for dogs, cats, birds, hamsters, guinea pigs, and fish.</p>
       </div>
     </section>
 
-    <!-- Trust bar -->
-    <section class="trust" aria-label="Highlights">
-      <div class="container">
-        <ul class="trust__list">
-          <li><svg class="icon"><use href="#i-pin"/></svg> Based in Salinas, CA</li>
-          <li><svg class="icon"><use href="#i-star"/></svg> 30 years of experience</li>
-          <li><svg class="icon"><use href="#i-chat"/></svg> Daily photo updates</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section class="section" id="services">
-      <div class="container">
-        <h2 class="section-title">How Georgia can help</h2>
-        <div class="service-grid">
-          <article class="service-card">
+    <!-- In-home visits -->
+    <section class="feature" id="in-home-visits">
+      <div class="container feature__inner">
+        <div class="feature__text">
+          <div class="feature__title">
             <div class="icon-chip"><svg class="icon"><use href="#i-key"/></svg></div>
-            <h3>In-home visits</h3>
-            <p>Care at your place while you’re away, so your pets stay comfy in the home they know.</p>
-          </article>
-          <article class="service-card">
+            <h2>In-home visits</h2>
+          </div>
+          <p>Georgia visits your home 1-2 times a day while you’re away. Your pets keep their routine and their favorite napping spots and you get photo updates with every visit.</p>
+          <ul class="bullets">
+            <li>Walks and play with ball, toys, or frisbee</li>
+            <li>Feeding at their usual times, with special diets followed</li>
+            <li>Medication right on schedule: pills, drops, and treatments</li>
+            <li>Pet areas kept tidy: bowls, litter, potty pickup, and swept floors</li>
+          </ul>
+          <a class="btn btn--secondary" href="#inquiry" data-open-modal="inquiry" data-service="In-home visits">Ask about in-home visits</a>
+        </div>
+        <img class="feature__photo" src="images/service-inhome.jpg" alt="A scruffy, happy terrier at home" style="object-position: 50% 15%">
+      </div>
+    </section>
+
+    <!-- Dog daycare -->
+    <section class="feature feature--flip" id="dog-daycare">
+      <div class="container feature__inner">
+        <div class="feature__text">
+          <div class="feature__title">
             <div class="icon-chip"><svg class="icon"><use href="#i-paw"/></svg></div>
-            <h3>Walks, ball, and fetch</h3>
-            <p>Daily walks and backyard play sessions to keep tails wagging and energy levels down.</p>
-          </article>
-          <article class="service-card">
-            <div class="icon-chip"><svg class="icon"><use href="#i-clock"/></svg></div>
-            <h3>Feeding on their schedule</h3>
-            <p>Meals at the times your pets are used to. Routines matter, especially when you’re gone.</p>
-          </article>
-          <article class="service-card">
-            <div class="icon-chip"><svg class="icon"><use href="#i-check"/></svg></div>
-            <h3>Medication care</h3>
-            <p>Medications administered right on time, exactly the way your pet needs them.</p>
-          </article>
-          <article class="service-card">
-            <div class="icon-chip"><svg class="icon"><use href="#i-home"/></svg></div>
-            <h3>Fresh &amp; tidy pet areas</h3>
-            <p>Clean bowls and water, litter sifting, outdoor pickup, and swept floors. Can accommodate special requests.</p>
-          </article>
-          <article class="service-card">
-            <div class="icon-chip"><svg class="icon"><use href="#i-heart"/></svg></div>
-            <h3>All creatures welcome</h3>
-            <p>Dogs, cats, birds, hamsters, guinea pigs, and fish. Everyone gets expert care.</p>
-          </article>
+            <h2>Dog daycare</h2>
+          </div>
+          <p class="caption feature__note"><svg class="icon icon--sm"><use href="#i-pin"/></svg> At Georgia’s home in South Salinas</p>
+          <p>Have your pup spend the day at the Garden family home with a big backyard, plenty of toys, and company from drop-off to pickup.</p>
+          <ul class="bullets">
+            <li>A large fenced backyard with toys and sunny sleeping spots</li>
+            <li>Walks, play, company, and attention all day from Georgia and family</li>
+            <li>Every new dog starts with a free meet and greet with Luna, Georgia’s dog</li>
+            <li>Only available for dogs who are non-reactive around other dogs, cats, and kids</li>
+          </ul>
+          <a class="btn btn--secondary" href="#inquiry" data-open-modal="inquiry" data-service="Dog daycare">Ask about dog daycare</a>
         </div>
+        <img class="feature__photo" src="images/service-daycare.jpg" alt="Two dogs playing tug-of-war with a rope toy">
       </div>
     </section>
 
-    <!-- Photo break -->
-    <section class="photo-break" aria-label="Sasha on a walk">
-      <img src="images/sasha-walk.jpg" alt="Sasha the husky walking past California poppies and lavender">
-      <div class="photo-break__caption">
-        <h2>Long walks, always.</h2>
-        <p class="caption">Sasha, a longtime walking client</p>
-      </div>
-    </section>
-
-    <!-- Meet the home team -->
-    <section class="section" id="crew">
-      <div class="container">
-        <div class="section-intro">
-          <h2>Meet the home team</h2>
-          <p>The locals in the Garden household: Luna the Great Pyrenees and Berlioz the (very large) Maine Coon mix.</p>
+    <!-- Service area -->
+    <section class="feature" id="service-area">
+      <div class="container feature__inner">
+        <div class="feature__text">
+          <div class="feature__title">
+            <div class="icon-chip"><svg class="icon"><use href="#i-pin"/></svg></div>
+            <h2>Service area</h2>
+          </div>
+          <p>Georgia is based in South Salinas and serves these nearby neighborhoods:</p>
+          <ul class="bullets">
+            <li>South Salinas</li>
+            <li>Toro Park</li>
+            <li>Las Palmas</li>
+            <li>Corral de Tierra</li>
+          </ul>
+          <p class="body-small" style="color: var(--color-text-secondary)">Just outside these areas? Reach out anyway, and Georgia will let you know if it can work.</p>
         </div>
-        <div class="pet-grid">
-          <article class="pet-card">
-            <img class="pet-card__photo" src="images/luna.jpg" alt="Luna, a white Great Pyrenees, lying on the grass">
-            <div class="pet-card__body">
-              <h3>Luna</h3>
-              <p class="body-small">Great Pyrenees, professional sleepy girl, and Georgia’s right-hand dog. Gentle with every creature she’s ever met.</p>
-            </div>
-          </article>
-          <article class="pet-card">
-            <img class="pet-card__photo" src="images/berlioz.jpg" alt="Berlioz, a large black Maine Coon mix cat, lounging on patio cushions">
-            <div class="pet-card__body">
-              <h3>Berlioz</h3>
-              <p class="body-small">A cat the size of a small dog, with confidence to match. Struts past dogs triple his size without a second glance.</p>
-            </div>
-          </article>
-        </div>
+        <img class="feature__photo feature__photo--map" src="images/service-area-map.png" alt="Illustrated map of Highway 68 with South Salinas, Toro Park, Las Palmas, and Corral de Tierra">
       </div>
     </section>
 
@@ -168,9 +132,7 @@
           <h2>Get in touch</h2>
           <p>Have a trip coming up, or questions about care? Send Georgia a note and she’ll reply as soon as she can.</p>
         </div>
-        <!-- Submissions go to a Google Sheet via the script URL set in js/main.js (see docs/contact-form-setup.md). -->
         <form class="form" action="#" method="post" data-contact-form>
-          <!-- Honeypot: humans never see this field; bots fill it in and get ignored. -->
           <div class="visually-hidden" aria-hidden="true">
             <label for="website">Website</label>
             <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">

@@ -225,14 +225,87 @@ p { margin: 0; }
 .photo-break__caption .caption { color: inherit; opacity: .85; margin-top: 4px; }
 
 /* --------------------------------------------------------------------------
+   Inner pages: intro + alternating feature sections (Services, Foster dogs)
+   -------------------------------------------------------------------------- */
+.page-intro { padding: clamp(40px, 6vw, 64px) 0 8px; }
+.page-intro .container { display: grid; gap: var(--spacing-md); }
+.feature { padding: clamp(32px, 4vw, 48px) 0; }
+.feature__inner { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(24px, 4vw, 48px); align-items: center; }
+.feature--flip .feature__text { order: 2; }
+.feature__text { display: grid; gap: var(--spacing-md); justify-items: start; }
+.feature__title { display: flex; align-items: center; gap: var(--spacing-md); }
+.feature__note { display: inline-flex; align-items: center; gap: 6px; }
+.feature__photo { width: 100%; max-width: 440px; aspect-ratio: 440 / 400; object-fit: cover; border-radius: var(--radius-lg); justify-self: end; }
+.feature--flip .feature__photo { justify-self: start; }
+.feature__photo--map { aspect-ratio: 3 / 2; object-fit: cover; max-width: 560px; }
+.bullets { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.bullets li { padding-left: 4px; }
+.bullets li::marker { color: var(--color-text-secondary); }
+[aria-current="page"] { color: var(--color-accent-hover) !important; }
+
+/* Inner-page extras: About, Foster dogs, dog detail pages */
+.feature__inner--top { align-items: start; }
+.feature__text--prose { gap: 20px; justify-items: stretch; }
+.feature__photo--tall { aspect-ratio: 440 / 480; }
+.carousel--story { width: 100%; aspect-ratio: 400 / 460; max-width: 400px; justify-self: end; }
+.org-links { display: grid; gap: 12px; justify-items: start; }
+.org-links a, .org-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--color-text-heading); }
+.photo-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-lg); }
+.photo-strip img { width: 100%; aspect-ratio: 341 / 260; object-fit: cover; border-radius: var(--radius-lg); }
+.featured { background: var(--color-bg-accent-soft); padding: clamp(40px, 5vw, 56px) 0; }
+
+.row-head { display: flex; justify-content: space-between; align-items: center; gap: var(--spacing-lg); margin-bottom: var(--spacing-lg); }
+.row-head h2 { margin-bottom: 6px; }
+.row-head__controls { display: flex; gap: 12px; }
+.round-btn {
+  width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid var(--color-border); background: var(--color-bg-card);
+  display: grid; place-items: center; color: var(--color-text-body);
+}
+.round-btn:hover { border-color: var(--color-accent); }
+.card-row { display: flex; gap: var(--spacing-lg); overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 4px 20px; margin: -4px -4px 0; scrollbar-width: none; }
+.card-row::-webkit-scrollbar { display: none; }
+.pet-card--carousel { flex: 0 0 250px; scroll-snap-align: start; max-width: none; }
+
+/* Dog detail page */
+.back-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--color-text-body); text-decoration: underline; margin-bottom: var(--spacing-lg); }
+.detail__inner { display: grid; grid-template-columns: 440px minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.detail__story { display: grid; gap: var(--spacing-md); }
+.outcome { border-top: 1px solid var(--color-border); padding-top: 20px; display: grid; gap: 10px; }
+.outcome__row { display: grid; grid-template-columns: 200px 1fr; gap: 20px; align-items: start; }
+.outcome__photo { width: 200px; aspect-ratio: 200 / 260; object-fit: cover; object-position: top; border-radius: var(--radius-lg); }
+
+.gallery { display: grid; gap: 16px; }
+.gallery__main { position: relative; aspect-ratio: 440 / 400; border-radius: var(--radius-lg); overflow: hidden; background: var(--color-bg-section); }
+.gallery__main img { width: 100%; height: 100%; object-fit: cover; }
+.gallery__controls { position: absolute; right: 12px; bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.gallery__arrow { width: 28px; height: 28px; border-radius: 50%; border: 0; background: rgba(30, 26, 22, .55); color: var(--cream-50); display: grid; place-items: center; }
+.gallery__arrow .icon { width: 16px; height: 16px; }
+.gallery__counter { padding: 5px 10px; border-radius: var(--radius-full); background: rgba(30, 26, 22, .55); color: var(--cream-50); font-size: 12px; font-weight: 700; line-height: 18px; }
+.gallery__thumbs { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.gallery__thumbs::-webkit-scrollbar { display: none; }
+.gallery__thumb { flex: 0 0 78px; width: 78px; height: 78px; padding: 0; border: 2.5px solid transparent; border-radius: var(--radius-md); overflow: hidden; background: var(--color-bg-section); }
+.gallery__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.gallery__thumb.is-active { border-color: var(--color-accent); }
+
+/* Share pills */
+.share { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; color: var(--color-text-secondary); }
+.pill {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px 10px 14px;
+  border-radius: var(--radius-full); border: 1.5px solid var(--color-border); background: var(--color-bg-card);
+  font-weight: 700; color: var(--color-text-heading);
+}
+.pill.is-done { background: var(--color-bg-sage-soft); border-color: var(--color-secondary-deep); color: var(--color-secondary-deep); }
+
+/* --------------------------------------------------------------------------
    Forms
    -------------------------------------------------------------------------- */
 .form { display: grid; gap: var(--spacing-md); max-width: 656px; margin: 0 auto; }
 .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md); }
-.field { display: grid; gap: var(--spacing-sm); }
+.field { display: grid; gap: var(--spacing-sm); min-width: 0; }
+.form__row > * { min-width: 0; } /* Safari: stop inputs overflowing their grid column */
 .field label { font-size: 13px; line-height: 18px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--color-text-secondary); }
 .field input, .field textarea, .field select {
-  font: inherit; color: var(--color-text-body); width: 100%;
+  font: inherit; color: var(--color-text-body); width: 100%; min-width: 0;
   padding: 14px var(--spacing-md); border: 1.5px solid var(--color-border); border-radius: var(--radius-md);
   background: var(--color-bg-card);
 }
@@ -241,7 +314,7 @@ p { margin: 0; }
 .select { position: relative; }
 .select__trigger {
   display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-sm);
-  width: 100%; font: inherit; color: var(--color-text-secondary); text-align: left;
+  width: 100%; min-width: 0; font: inherit; color: var(--color-text-secondary); text-align: left;
   padding: 14px var(--spacing-md); border: 1.5px solid var(--color-border); border-radius: var(--radius-md);
   background: var(--color-bg-card); cursor: pointer;
 }
@@ -375,4 +448,26 @@ p { margin: 0; }
 @media (max-width: 480px) {
   .hero__actions { flex-direction: column; }
   .hero__actions .btn { width: 100%; }
+}
+
+@media (max-width: 760px) {
+  .feature__inner { grid-template-columns: 1fr; }
+  .feature--flip .feature__text { order: 0; }
+  .feature__photo, .feature--flip .feature__photo { order: -1; max-width: none; aspect-ratio: 342 / 220; justify-self: stretch; }
+  .feature__photo--map { aspect-ratio: 3 / 2; }
+  .feature__text .btn { width: 100%; justify-self: stretch; }
+}
+
+@media (max-width: 900px) {
+  .detail__inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .carousel--story { max-width: none; justify-self: stretch; aspect-ratio: 342 / 400; order: -1; }
+  .photo-strip { grid-template-columns: 1fr 1fr; }
+  .photo-strip img:first-child { grid-column: 1 / -1; aspect-ratio: 342 / 240; }
+  .row-head__controls { display: none; }
+  .pet-card--carousel { flex-basis: 280px; }
+  .outcome__row { grid-template-columns: 140px 1fr; }
+  .outcome__photo { width: 140px; aspect-ratio: 140 / 180; }
+  .feature__photo--tall { aspect-ratio: 342 / 300; }
 }

@@ -65,8 +65,17 @@ function openModal(name) {
 }
 function closeModals() { Object.values(modals).forEach((m) => m.classList.remove('is-open')); }
 document.querySelectorAll('[data-open-modal]').forEach((el) => {
-  el.addEventListener('click', (e) => { e.preventDefault(); openModal(el.dataset.openModal); });
+  el.addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal(el.dataset.openModal);
+    if (el.dataset.service) presetService(el.dataset.service); // e.g. "Dog daycare" from a services CTA
+  });
 });
+function presetService(value) {
+  const sel = document.querySelector('[data-modal="inquiry"] [data-select]');
+  const opt = sel && Array.from(sel.querySelectorAll('.select__option')).find((o) => o.dataset.value === value);
+  if (opt) opt.click();
+}
 document.querySelectorAll('[data-modal-close]').forEach((el) => el.addEventListener('click', closeModals));
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModals(); });
 if (location.hash === '#inquiry') openModal('inquiry'); // lets other pages link straight to the form
@@ -151,5 +160,47 @@ document.querySelectorAll('[data-select]').forEach((sel) => {
   sel.closest('form')?.addEventListener('reset', () => {
     hidden.value = ''; valueEl.textContent = valueEl.dataset.placeholder;
     sel.classList.remove('has-value'); options.forEach((o) => o.setAttribute('aria-selected', 'false'));
+  });
+});
+
+// ---- Past fosters row: arrow buttons scroll the card strip ----
+const cardRow = document.querySelector('[data-card-row]');
+document.querySelectorAll('[data-scroll]').forEach((btn) => {
+  btn.addEventListener('click', () => cardRow?.scrollBy({ left: Number(btn.dataset.scroll) * 300, behavior: 'smooth' }));
+});
+
+// ---- Dog photo gallery: thumbnails, arrows, counter ----
+document.querySelectorAll('[data-gallery]').forEach((g) => {
+  const main = g.querySelector('[data-gallery-main]');
+  const thumbs = Array.from(g.querySelectorAll('.gallery__thumb'));
+  const counter = g.querySelector('[data-gallery-counter]');
+  let index = 0;
+  function show(i) {
+    index = (i + thumbs.length) % thumbs.length;
+    main.src = thumbs[index].querySelector('img').src;
+    thumbs.forEach((t, n) => t.classList.toggle('is-active', n === index));
+    thumbs[index].scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+    if (counter) counter.textContent = (index + 1) + ' / ' + thumbs.length;
+  }
+  thumbs.forEach((t, i) => t.addEventListener('click', () => show(i)));
+  g.querySelector('[data-gallery-prev]')?.addEventListener('click', () => show(index - 1));
+  g.querySelector('[data-gallery-next]')?.addEventListener('click', () => show(index + 1));
+});
+
+// ---- Share row: native share where the browser supports it, copy link everywhere ----
+document.querySelectorAll('[data-share]').forEach((row) => {
+  const url = location.href.split('#')[0];
+  const title = row.dataset.shareTitle || document.title;
+  const nativeBtn = row.querySelector('[data-share-native]');
+  const copyBtn = row.querySelector('[data-share-copy]');
+  if (navigator.share && nativeBtn) {
+    nativeBtn.hidden = false; // only shown when the phone/browser has a share sheet
+    nativeBtn.addEventListener('click', () => navigator.share({ title, url }).catch(() => {}));
+  }
+  copyBtn?.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(url); } catch (e) { return; }
+    const label = copyBtn.querySelector('span');
+    copyBtn.classList.add('is-done'); label.textContent = 'Copied!';
+    setTimeout(() => { copyBtn.classList.remove('is-done'); label.textContent = 'Copy link'; }, 2000);
   });
 });
