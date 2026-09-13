@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Foster dogs · Garden Pet Sitting</title>
   <meta name="description" content="Why Georgia fosters for SCAR and Hitchcock Road Animal Services, and the past fosters who found their homes.">
-  <link rel="icon" href="images/logo.png">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png?v=2">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Figtree:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=14">
 </head>
 <body>
 
@@ -92,20 +94,19 @@
           <a class="org-link" href="https://www.scar.pet/team-4" target="_blank" rel="noopener">Or apply directly with SCAR <svg class="icon icon--sm"><use href="#i-external"/></svg></a>
           <div class="share" data-share data-share-title="Biscuit · Garden Pet Sitting">
             <span class="body-small">Share Biscuit:</span>
-            <button class="pill" data-share-native hidden><svg class="icon icon--sm"><use href="#i-share"/></svg> Share</button>
-            <button class="pill" data-share-copy><svg class="icon icon--sm"><use href="#i-link"/></svg> <span>Copy link</span></button>
+            <button class="pill" data-share-native hidden aria-label="Share"><svg class="icon icon--sm"><use href="#i-share"/></svg> <span>Share</span></button>
+            <button class="pill" data-share-copy aria-label="Copy link"><svg class="icon icon--sm"><use href="#i-link"/></svg> <span>Copy link</span></button>
           </div>
         </div>
       </div>
     </section>
     -->
 
-    <section class="section" id="past-fosters">
+    <section class="section" id="past-fosters" style="padding-top: 8px">
       <div class="container">
         <div class="row-head">
           <div>
             <h2>Past fosters</h2>
-            <p>Tap a dog to read their story and see where they landed.</p>
           </div>
           <div class="row-head__controls">
             <button class="round-btn" data-scroll="-1" aria-label="Scroll left"><svg class="icon" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
@@ -160,7 +161,6 @@
         Garden Pet Sitting
         <small>© 2026 · Based in Salinas, CA</small>
       </div>
-      <a href="https://www.facebook.com/" aria-label="Garden Pet Sitting on Facebook"><svg class="icon"><use href="#i-facebook"/></svg></a>
     </div>
   </footer>
 
@@ -172,7 +172,7 @@
         <h3 id="inquiry-title">Get in touch</h3>
         <button class="modal__close" data-modal-close aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button>
       </div>
-      <p class="body-small" style="color: var(--color-text-secondary)">Georgia will reply within a day, usually sooner.</p>
+      <p style="color: var(--color-text-secondary)">Georgia will reply within a day, usually sooner.</p>
       <form class="form form--modal" action="#" method="post" data-contact-form>
         <div class="visually-hidden" aria-hidden="true">
           <label for="m-website">Website</label>
@@ -195,7 +195,7 @@
         </div>
         <div class="field">
           <label for="m-name">Your name</label>
-          <input id="m-name" name="name" type="text" placeholder="e.g. Jenna" required>
+          <input id="m-name" name="name" type="text" placeholder="Jenna" required>
         </div>
         <div class="form__row">
           <div class="field">
@@ -209,7 +209,7 @@
         </div>
         <div class="field">
           <label for="m-message">Message</label>
-          <textarea id="m-message" name="message" placeholder="Tell us about your pets and what you need!" required></textarea>
+          <textarea id="m-message" name="message" placeholder="Tell Georgia about your pets and what you need!" required></textarea>
         </div>
         <div class="modal__actions">
           <button class="btn btn--link" type="button" data-modal-close>Cancel</button>
@@ -234,6 +234,6 @@
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=14"></script>
 </body>
 </html>

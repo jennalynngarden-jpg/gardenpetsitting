@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Services · Garden Pet Sitting</title>
   <meta name="description" content="In-home pet visits and dog daycare from Georgia, serving South Salinas, Toro Park, Las Palmas, and Corral de Tierra.">
-  <link rel="icon" href="images/logo.png">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png?v=2">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Figtree:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=14">
 </head>
 <body>
 
@@ -105,7 +107,7 @@
     </section>
 
     <!-- Service area -->
-    <section class="feature" id="service-area">
+    <section class="feature feature--map" id="service-area">
       <div class="container feature__inner">
         <div class="feature__text">
           <div class="feature__title">
@@ -140,7 +142,7 @@
           <div class="form__row">
           <div class="field">
               <label for="name">Your name</label>
-              <input id="name" name="name" type="text" placeholder="e.g. Jenna" required>
+              <input id="name" name="name" type="text" placeholder="Jenna" required>
             </div>
           <div class="field">
               <label id="service-label">Service</label>
@@ -170,7 +172,7 @@
           </div>
           <div class="field">
             <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Tell us about your pets and what you need!" required></textarea>
+            <textarea id="message" name="message" placeholder="Tell Georgia about your pets and what you need!" required></textarea>
           </div>
           <div class="form__actions">
             <button class="btn btn--primary" type="submit">Send message</button>
@@ -187,7 +189,6 @@
         Garden Pet Sitting
         <small>© 2026 · Based in Salinas, CA</small>
       </div>
-      <a href="https://www.facebook.com/" aria-label="Garden Pet Sitting on Facebook"><svg class="icon"><use href="#i-facebook"/></svg></a>
     </div>
   </footer>
 
@@ -199,7 +200,7 @@
         <h3 id="inquiry-title">Get in touch</h3>
         <button class="modal__close" data-modal-close aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button>
       </div>
-      <p class="body-small" style="color: var(--color-text-secondary)">Georgia will reply within a day, usually sooner.</p>
+      <p style="color: var(--color-text-secondary)">Georgia will reply within a day, usually sooner.</p>
       <form class="form form--modal" action="#" method="post" data-contact-form>
         <div class="visually-hidden" aria-hidden="true">
           <label for="m-website">Website</label>
@@ -222,7 +223,7 @@
         </div>
         <div class="field">
           <label for="m-name">Your name</label>
-          <input id="m-name" name="name" type="text" placeholder="e.g. Jenna" required>
+          <input id="m-name" name="name" type="text" placeholder="Jenna" required>
         </div>
         <div class="form__row">
           <div class="field">
@@ -236,7 +237,7 @@
         </div>
         <div class="field">
           <label for="m-message">Message</label>
-          <textarea id="m-message" name="message" placeholder="Tell us about your pets and what you need!" required></textarea>
+          <textarea id="m-message" name="message" placeholder="Tell Georgia about your pets and what you need!" required></textarea>
         </div>
         <div class="modal__actions">
           <button class="btn btn--link" type="button" data-modal-close>Cancel</button>
@@ -261,6 +262,6 @@
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=14"></script>
 </body>
 </html>

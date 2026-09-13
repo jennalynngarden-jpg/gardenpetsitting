@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About Georgia · Garden Pet Sitting</title>
   <meta name="description" content="Georgia has 30 years of experience caring for animals and fosters dogs for Hitchcock Road Animal Services in Salinas.">
-  <link rel="icon" href="images/logo.png">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png?v=2">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Figtree:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=14">
 </head>
 <body>
 
@@ -59,7 +61,7 @@
       <div class="container"><h1>About Georgia</h1></div>
     </section>
     <section class="feature">
-      <div class="container feature__inner feature__inner--top">
+      <div class="container feature__inner feature__inner--top feature__inner--photo-first">
         <img class="feature__photo feature__photo--tall" src="images/about-georgia-luna-ginger.jpg" alt="Georgia on a hillside with Luna and Ginger">
         <div class="feature__text feature__text--prose">
           <p>Georgia lives in South Salinas and has spent more than 30 years caring for animals: dogs, cats, birds, hamsters, guinea pigs, fish, and maybe even a frog or two. What began as a house full of family pets grew into fostering dogs from Hitchcock Road Animal Services in Salinas and helping many of them find forever homes.</p>
@@ -85,7 +87,6 @@
         Garden Pet Sitting
         <small>© 2026 · Based in Salinas, CA</small>
       </div>
-      <a href="https://www.facebook.com/" aria-label="Garden Pet Sitting on Facebook"><svg class="icon"><use href="#i-facebook"/></svg></a>
     </div>
   </footer>
 
@@ -97,7 +98,7 @@
         <h3 id="inquiry-title">Get in touch</h3>
         <button class="modal__close" data-modal-close aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button>
       </div>
-      <p class="body-small" style="color: var(--color-text-secondary)">Georgia will reply within a day, usually sooner.</p>
+      <p style="color: var(--color-text-secondary)">Georgia will reply within a day, usually sooner.</p>
       <form class="form form--modal" action="#" method="post" data-contact-form>
         <div class="visually-hidden" aria-hidden="true">
           <label for="m-website">Website</label>
@@ -120,7 +121,7 @@
         </div>
         <div class="field">
           <label for="m-name">Your name</label>
-          <input id="m-name" name="name" type="text" placeholder="e.g. Jenna" required>
+          <input id="m-name" name="name" type="text" placeholder="Jenna" required>
         </div>
         <div class="form__row">
           <div class="field">
@@ -134,7 +135,7 @@
         </div>
         <div class="field">
           <label for="m-message">Message</label>
-          <textarea id="m-message" name="message" placeholder="Tell us about your pets and what you need!" required></textarea>
+          <textarea id="m-message" name="message" placeholder="Tell Georgia about your pets and what you need!" required></textarea>
         </div>
         <div class="modal__actions">
           <button class="btn btn--link" type="button" data-modal-close>Cancel</button>
@@ -159,6 +160,6 @@
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=14"></script>
 </body>
 </html>

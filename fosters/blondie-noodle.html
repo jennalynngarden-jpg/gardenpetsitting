@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Blondie & Noodle · Foster dogs · Garden Pet Sitting</title>
   <meta name="description" content="Two tiny puppies who stayed just long enough to nap in a pile, fight over one stick, and steal every heart in the house.">
-  <link rel="icon" href="../images/logo.png">
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="../images/favicon.png?v=2">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Figtree:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css?v=14">
 </head>
 <body>
 
@@ -59,6 +61,10 @@
       <div class="container">
         <a class="back-link" href="../fosters.html"><svg class="icon icon--sm" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg> All foster dogs</a>
         <div class="detail__inner">
+          <div class="detail__head">
+            <p class="caption"><a class="back-arrow" href="../fosters.html" aria-label="All foster dogs"><svg class="icon" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></a>Short-term fosters</p>
+            <h1>Blondie &amp; Noodle</h1>
+          </div>
           <div class="gallery" data-gallery>
             <div class="gallery__main">
               <img src="../images/fosters/blondie-noodle-1.jpg" alt="Blondie &amp; Noodle" data-gallery-main>
@@ -76,8 +82,6 @@
             </div>
           </div>
           <div class="detail__story">
-            <p class="caption">Short-term fosters</p>
-            <h1>Blondie &amp; Noodle</h1>
           <p>Blondie and Noodle were two tiny puppies who landed with Georgia for a short stay before heading on to rescue: Blondie the sandy one, Noodle the little black mop. Their days were mostly naps in a pile, tug-of-war over a single stick, and being carried around by everyone who stopped by.</p>
             <div class="outcome">
               <h3>Where are they now?</h3>
@@ -85,8 +89,8 @@
             </div>
             <div class="share" data-share data-share-title="Blondie &amp; Noodle · Garden Pet Sitting">
               <span class="body-small">Share Blondie &amp; Noodle’s story:</span>
-              <button class="pill" data-share-native hidden><svg class="icon icon--sm"><use href="#i-share"/></svg> Share</button>
-              <button class="pill" data-share-copy><svg class="icon icon--sm"><use href="#i-link"/></svg> <span>Copy link</span></button>
+              <button class="pill" data-share-native hidden aria-label="Share"><svg class="icon icon--sm"><use href="#i-share"/></svg> <span>Share</span></button>
+              <button class="pill" data-share-copy aria-label="Copy link"><svg class="icon icon--sm"><use href="#i-link"/></svg> <span>Copy link</span></button>
             </div>
           </div>
         </div>
@@ -100,7 +104,6 @@
         Garden Pet Sitting
         <small>© 2026 · Based in Salinas, CA</small>
       </div>
-      <a href="https://www.facebook.com/" aria-label="Garden Pet Sitting on Facebook"><svg class="icon"><use href="#i-facebook"/></svg></a>
     </div>
   </footer>
 
@@ -112,7 +115,7 @@
         <h3 id="inquiry-title">Get in touch</h3>
         <button class="modal__close" data-modal-close aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button>
       </div>
-      <p class="body-small" style="color: var(--color-text-secondary)">Georgia will reply within a day, usually sooner.</p>
+      <p style="color: var(--color-text-secondary)">Georgia will reply within a day, usually sooner.</p>
       <form class="form form--modal" action="#" method="post" data-contact-form>
         <div class="visually-hidden" aria-hidden="true">
           <label for="m-website">Website</label>
@@ -135,7 +138,7 @@
         </div>
         <div class="field">
           <label for="m-name">Your name</label>
-          <input id="m-name" name="name" type="text" placeholder="e.g. Jenna" required>
+          <input id="m-name" name="name" type="text" placeholder="Jenna" required>
         </div>
         <div class="form__row">
           <div class="field">
@@ -149,7 +152,7 @@
         </div>
         <div class="field">
           <label for="m-message">Message</label>
-          <textarea id="m-message" name="message" placeholder="Tell us about your pets and what you need!" required></textarea>
+          <textarea id="m-message" name="message" placeholder="Tell Georgia about your pets and what you need!" required></textarea>
         </div>
         <div class="modal__actions">
           <button class="btn btn--link" type="button" data-modal-close>Cancel</button>
@@ -174,6 +177,6 @@
     </div>
   </div>
 
-  <script src="../js/main.js"></script>
+  <script src="../js/main.js?v=14"></script>
 </body>
 </html>

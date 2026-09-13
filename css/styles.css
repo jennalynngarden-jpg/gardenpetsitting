@@ -149,7 +149,7 @@ p { margin: 0; }
 .brand span { font-family: var(--font-heading); font-weight: 600; font-size: clamp(20px, 2vw, 24px); line-height: 1.3; white-space: nowrap; transition: font-size .2s ease; }
 .nav { display: flex; align-items: center; gap: clamp(20px, 2.5vw, 32px); }
 .nav a { font-weight: 700; text-decoration: none; color: var(--color-text-body); white-space: nowrap; }
-.nav a:hover { color: var(--color-accent-hover); }
+.nav a:not(.btn):hover { color: var(--color-accent-hover); }
 .nav .btn { padding: 8px 20px; font-size: 15px; line-height: 22px; } /* a size smaller in the header */
 .nav__toggle { display: none; background: none; border: 0; padding: 10px; color: var(--color-text-body); }
 
@@ -232,6 +232,7 @@ p { margin: 0; }
 .feature { padding: clamp(32px, 4vw, 48px) 0; }
 .feature__inner { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(24px, 4vw, 48px); align-items: center; }
 .feature--flip .feature__text { order: 2; }
+.feature--flip .feature__inner { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
 .feature__text { display: grid; gap: var(--spacing-md); justify-items: start; }
 .feature__title { display: flex; align-items: center; gap: var(--spacing-md); }
 .feature__note { display: inline-flex; align-items: center; gap: 6px; }
@@ -245,6 +246,7 @@ p { margin: 0; }
 
 /* Inner-page extras: About, Foster dogs, dog detail pages */
 .feature__inner--top { align-items: start; }
+.feature__inner--photo-first { grid-template-columns: minmax(0, 440px) minmax(0, 1fr); }
 .feature__text--prose { gap: 20px; justify-items: stretch; }
 .feature__photo--tall { aspect-ratio: 440 / 480; justify-self: start; }
 .carousel--story { width: 100%; aspect-ratio: 400 / 460; max-width: 400px; justify-self: end; }
@@ -268,8 +270,18 @@ p { margin: 0; }
 .pet-card--carousel .pet-card__photo { aspect-ratio: 250 / 250; }
 
 /* Dog detail page */
-.back-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--color-text-body); text-decoration: underline; margin-bottom: var(--spacing-lg); }
-.detail__inner { display: grid; grid-template-columns: 440px minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.back-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--color-text-body); text-decoration: none; margin-bottom: var(--spacing-lg); }
+.back-link:hover { color: var(--color-accent-hover); }
+.detail__inner {
+  display: grid; grid-template-columns: 440px minmax(0, 1fr); column-gap: clamp(24px, 4vw, 48px); row-gap: var(--spacing-md); align-items: start;
+  grid-template-areas: "gallery head" "gallery story";
+}
+.detail__head { grid-area: head; display: grid; gap: var(--spacing-md); }
+.detail__head .caption { display: flex; align-items: center; gap: 8px; }
+.back-arrow { display: none; color: inherit; line-height: 0; }
+.back-arrow .icon { width: 18px; height: 18px; }
+.detail__story { grid-area: story; }
+.gallery { grid-area: gallery; }
 .detail__story { display: grid; gap: var(--spacing-md); }
 .outcome { border-top: 1px solid var(--color-border); padding-top: 20px; display: grid; gap: 10px; }
 .outcome__row { display: grid; grid-template-columns: 200px 1fr; gap: 20px; align-items: start; }
@@ -384,14 +396,15 @@ p { margin: 0; }
     flex-direction: column; align-items: stretch; gap: 0;
     background: var(--color-bg-card); box-shadow: var(--shadow-modal);
     padding: 76px 24px 24px;
-    transform: translateX(100%); transition: transform .25s ease;
-    display: flex;
+    transform: translateX(100%); transition: transform .25s ease, visibility 0s .25s;
+    visibility: hidden; display: flex;
   }
-  .nav.is-open { transform: translateX(0); }
+  .nav.is-open { transform: translateX(0); visibility: visible; transition: transform .25s ease; }
   .nav a:not(.btn) {
     font-size: 18px; line-height: 26px; padding: 14px 0;
     border-bottom: 1px solid var(--color-border);
   }
+  .nav a:not(.btn):last-of-type, .nav a:has(+ .btn) { border-bottom: 0; } /* no divider under the last link */
   .nav .btn { margin-top: var(--spacing-lg); width: 100%; padding: 12px var(--spacing-lg); }
   /* Dimmed page behind the drawer */
   .nav-scrim { position: fixed; inset: 0; background: rgba(30, 26, 22, .45); z-index: 105; display: none; }
@@ -452,15 +465,20 @@ p { margin: 0; }
 }
 
 @media (max-width: 760px) {
-  .feature__inner { grid-template-columns: 1fr; }
+  .feature__inner, .feature--flip .feature__inner, .feature__inner--photo-first { grid-template-columns: 1fr; }
   .feature--flip .feature__text { order: 0; }
   .feature__photo, .feature--flip .feature__photo { order: -1; max-width: none; aspect-ratio: 342 / 220; justify-self: stretch; }
   .feature__photo--map { aspect-ratio: 3 / 2; }
   .feature__text .btn { width: 100%; justify-self: stretch; }
+  /* Service area: heading first, then the map, then the text */
+  .feature--map .feature__text { display: contents; }
+  .feature--map .feature__inner { gap: var(--spacing-md); }
+  .feature--map .feature__title { order: -2; }
+  .feature--map .feature__photo { order: -1; }
 }
 
 @media (max-width: 900px) {
-  .detail__inner { grid-template-columns: 1fr; }
+  .detail__inner { grid-template-columns: 1fr; grid-template-areas: "head" "gallery" "story"; }
 }
 @media (max-width: 760px) {
   .carousel--story { max-width: none; justify-self: stretch; aspect-ratio: 342 / 400; order: -1; }
@@ -471,4 +489,39 @@ p { margin: 0; }
   .outcome__row { grid-template-columns: 140px 1fr; }
   .outcome__photo { width: 140px; aspect-ratio: 140 / 180; }
   .feature__photo--tall { aspect-ratio: 342 / 300; }
+}
+
+/* Phones: share pills become round icon buttons so the row never wraps */
+@media (max-width: 480px) {
+  .pill { width: 44px; height: 44px; padding: 0; justify-content: center; border-radius: 50%; }
+  .pill span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .share { flex-wrap: nowrap; }
+}
+
+/* Phones: the menu becomes a sheet that drops down from under the header */
+@media (max-width: 480px) {
+  .nav {
+    top: 68px; bottom: auto; left: 0; right: 0; width: 100%;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    padding: 8px 24px 24px;
+    /* Unrolls downward from the header edge instead of sliding over it */
+    transform: none;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path .3s ease, visibility 0s .3s;
+  }
+  .nav.is-open { transform: none; clip-path: inset(0 0 0 0); transition: clip-path .3s ease; }
+  .nav-scrim { top: 68px; }
+}
+
+/* Phones: section headings align left like the rest of the content */
+@media (max-width: 480px) {
+  .section-title, .section-intro { text-align: left; }
+  .section-title { margin-bottom: var(--spacing-md); }
+}
+
+/* Phones: the back link becomes a small arrow at the start of the "Past foster" line */
+@media (max-width: 480px) {
+  .detail .back-link { display: none; }
+  .back-arrow { display: inline-flex; }
+  .detail { padding-top: var(--spacing-lg); }
 }
