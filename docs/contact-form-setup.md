@@ -5,7 +5,7 @@ Every message sent through the website lands as a new row in a Google Sheet, and
 ## 1. Create the Sheet
 
 1. Go to [sheets.google.com](https://sheets.google.com) and create a new spreadsheet. Name it something like **Garden Pet Sitting — Inquiries**.
-2. In row 1, type these headers in columns A to G: `Date`, `Name`, `Email`, `Phone`, `Service`, `Message`, `Page`.
+2. In row 1, type these headers in columns A to G: `Date`, `Name`, `Email`, `Phone`, `Service`, `Message`, `Source page`.
 3. Share the sheet with Georgia (Share button → her email → Editor).
 
 ## 2. Add the script

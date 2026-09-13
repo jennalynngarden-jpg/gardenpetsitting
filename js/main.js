@@ -83,7 +83,7 @@ if (location.hash === '#inquiry') openModal('inquiry'); // lets other pages link
 // ---- Contact forms -> Google Sheet -> confirmation ----
 // Paste the Google Apps Script "Web app" URL here (see docs/contact-form-setup.md).
 // While it's empty, the forms just show the confirmation so you can preview the site.
-const FORM_ENDPOINT = '';
+const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxc8_lhPvunk2I61QIeMstAYCwMB0w5XvI_JrauXRBveJxCzmKW_e8_wVOYgQGIj3Iz/exec';
 
 document.querySelectorAll('[data-contact-form]').forEach((form) => {
   form.addEventListener('submit', async (e) => {
