@@ -69,3 +69,34 @@ Commit and push. Submit a test message from the live site: a row should appear i
 - Emails are sent from the Google account that owns the script (whoever created the sheet). If you'd rather they come from Georgia's own account, have her create the sheet and do steps 2 and 3 while signed in as herself.
 - The hidden "website" field in the form is a spam trap. Real people never see it; bots fill it in and get ignored.
 - If you ever change the script, use **Deploy → Manage deployments → Edit → New version** so the same URL keeps working.
+
+## Getting a phone buzz for new inquiries (Gmail filter)
+
+Georgia's email is busy, so make new website messages stand out and buzz her phone
+like a text. This is done inside her Gmail account, on a computer first, then on her phone.
+
+### Part 1: label the emails (on a computer)
+
+1. Open gmail.com and sign in as Georgia.
+2. Click the search box at the top, then the sliders icon on its right to open the advanced search.
+3. In the "Subject" field type: `Garden Pet Sitting website`
+4. Click "Create filter" at the bottom.
+5. Tick these boxes:
+   - Star it
+   - Apply the label: choose "New label" and name it `Pet sitting inquiries`
+   - Always mark it as important
+   - Never send it to Spam
+6. Click "Create filter".
+
+### Part 2: make her phone buzz only for that label (Gmail app on iPhone)
+
+1. Open the Gmail app, tap the menu (three lines), scroll down and tap Settings.
+2. Tap her email address, then "Email notifications".
+3. Choose "Label settings" (or "Manage labels" on some versions).
+4. Tap "Pet sitting inquiries" and turn on "Notify for every message" or "Sync messages: last 30 days" then enable notifications.
+5. Optional: set "Email notifications" for the inbox overall to "None" or "High priority only"
+   so only the pet-sitting label makes noise.
+
+Android is the same idea: Settings > her address > Manage notifications > Manage labels.
+
+Tip: send a test from the website afterwards and confirm the phone buzzes.
