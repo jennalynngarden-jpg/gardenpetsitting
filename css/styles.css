@@ -359,6 +359,14 @@ p { margin: 0; }
    -------------------------------------------------------------------------- */
 .modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; padding: var(--spacing-lg); z-index: 100; }
 .modal.is-open { display: flex; }
+/* Open animations: the backdrop fades in and the card rises slightly */
+.modal.is-open .modal__scrim { animation: modal-fade .25s ease-out both; }
+.modal.is-open .modal__card { animation: modal-rise .3s cubic-bezier(.2, .8, .3, 1) both; }
+@keyframes modal-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modal-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .modal.is-open .modal__scrim, .modal.is-open .modal__card { animation: none; }
+}
 .modal__scrim { position: absolute; inset: 0; background: rgba(30, 26, 22, .55); }
 .modal__card {
   position: relative; width: 440px; max-width: 100%; background: var(--color-bg-card);
@@ -448,15 +456,38 @@ p { margin: 0; }
   .modal { padding: 0; align-items: flex-end; }
   .modal__card--wide {
     width: 100%; max-height: 92vh; border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    padding: 12px var(--spacing-lg) var(--spacing-lg);
+    padding: 12px var(--spacing-lg) 0;
+    /* The card itself no longer scrolls; the form inside it does, so the Send button can stay put */
+    display: flex; flex-direction: column; overflow: hidden;
   }
+  .modal.is-open .modal__card--wide { animation: sheet-up .35s cubic-bezier(.2, .8, .3, 1) both; }
   .modal__card--wide::before {
-    content: ""; display: block; width: 36px; height: 5px; border-radius: 3px;
+    content: ""; display: block; flex: none; width: 36px; height: 5px; border-radius: 3px;
     background: var(--color-border); margin: 0 auto 12px;
   }
-  .modal__card--wide .modal__actions { flex-direction: column-reverse; align-items: stretch; gap: var(--spacing-md); }
+  .modal__card--wide .modal__header { flex: none; }
+  .modal__card--wide .form--modal {
+    flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
+    /* Let the fields scroll all the way past the sticky footer */
+    margin: 0 calc(-1 * var(--spacing-lg)); padding: 0 var(--spacing-lg);
+  }
+  /* Send button pinned to the bottom of the sheet */
+  .modal__card--wide .modal__actions {
+    position: sticky; bottom: 0; margin: 0 calc(-1 * var(--spacing-lg));
+    padding: var(--spacing-md) var(--spacing-lg) calc(var(--spacing-lg) + env(safe-area-inset-bottom));
+    background: var(--color-bg-card);
+  }
+  /* Soft fade above the button: hints that there is more form to scroll */
+  .modal__card--wide .modal__actions::before {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 40px; pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--color-bg-card));
+  }
   .modal__card--wide .btn--primary { width: 100%; }
+  /* The X in the corner closes the sheet, so the Cancel link is not needed on phones */
+  .modal__card--wide .modal__actions .btn--link { display: none; }
 }
+@keyframes sheet-up { from { transform: translateY(100%); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .modal.is-open .modal__card--wide { animation: none; } }
 
 /* Phones only: stack the hero buttons full width */
 @media (max-width: 480px) {
