@@ -633,7 +633,9 @@ p { margin: 0; }
 /* Review detail modal: name, stars, gallery, full text */
 .review-detail { grid-template-columns: 1fr; }          /* one column: the foster-page gallery grid areas do not apply here */
 .review-detail .gallery { grid-area: auto; }
-.review-detail__head { display: grid; gap: 4px; }
+.review-detail__head { display: grid; gap: 4px; flex: 1; min-width: 0; }
+.review-detail__meta-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.review-detail__meta-row p { margin: 0; }
 .review-detail .gallery__main { aspect-ratio: 656 / 400; }
 .review-detail .gallery__main img { object-position: 50% 30%; }
 .review-detail__text { font-size: 16px; line-height: 26px; white-space: pre-line; }

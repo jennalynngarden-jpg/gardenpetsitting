@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Figtree:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20">
+  <link rel="stylesheet" href="css/styles.css?v=21">
 </head>
 <body>
 
@@ -188,8 +188,10 @@
       <div class="modal__header">
         <div class="review-detail__head">
           <h3 id="review-title" data-review-name></h3>
-          <p class="body-small" style="color: var(--color-text-secondary)" data-review-meta></p>
-          <div data-review-stars></div>
+          <div class="review-detail__meta-row">
+            <div data-review-stars></div>
+            <p class="body-small" style="color: var(--color-text-secondary)" data-review-meta></p>
+          </div>
         </div>
         <button class="modal__close" data-modal-close aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button>
       </div>
@@ -278,7 +280,7 @@
     </div>
   </div>
 
-  <script src="js/main.js?v=20"></script>
-  <script src="js/reviews.js?v=20"></script>
+  <script src="js/main.js?v=21"></script>
+  <script src="js/reviews.js?v=21"></script>
 </body>
 </html>
