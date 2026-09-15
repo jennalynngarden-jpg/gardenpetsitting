@@ -125,8 +125,7 @@ function renderReviewsPage(reviews) {
   const status = document.querySelector('[data-reviews-status]');
   if (!reviews.length) {
     grid.hidden = true;
-    status.innerHTML = '<p class="body-large">No reviews yet. If Georgia has looked after your pets, you could be the first.</p>' +
-      '<button class="btn btn--primary" type="button" data-open-modal="review-form">Leave a review</button>';
+    status.innerHTML = '<p class="body-large">No reviews yet. If Georgia has looked after your pets, you could be the first.</p>';
     status.hidden = false; return;
   }
   status.hidden = true;
