@@ -468,7 +468,9 @@ p { margin: 0; }
   .modal__card--wide .modal__header { flex: none; }
   .modal__card--wide .form--modal {
     flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
-    /* Let the fields scroll all the way past the sticky footer */
+    /* Let the fields scroll all the way past the sticky footer.
+       width: auto (not 100%) so Safari stretches the form correctly with the negative margins */
+    width: auto; align-self: stretch;
     margin: 0 calc(-1 * var(--spacing-lg)); padding: 0 var(--spacing-lg);
   }
   /* Send button pinned to the bottom of the sheet */
