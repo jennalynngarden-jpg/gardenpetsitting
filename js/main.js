@@ -64,12 +64,12 @@ function openModal(name) {
   if (first) first.focus();
 }
 function closeModals() { Object.values(modals).forEach((m) => m.classList.remove('is-open')); }
-document.querySelectorAll('[data-open-modal]').forEach((el) => {
-  el.addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal(el.dataset.openModal);
-    if (el.dataset.service) presetService(el.dataset.service); // e.g. "Dog daycare" from a services CTA
-  });
+// One listener for every "open modal" button, including ones added later by reviews.js
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-open-modal]'); if (!el) return;
+  e.preventDefault();
+  openModal(el.dataset.openModal);
+  if (el.dataset.service) presetService(el.dataset.service); // e.g. "Dog daycare" from a services CTA
 });
 function presetService(value) {
   const sel = document.querySelector('[data-modal="inquiry"] [data-select]');
@@ -79,6 +79,7 @@ function presetService(value) {
 document.querySelectorAll('[data-modal-close]').forEach((el) => el.addEventListener('click', closeModals));
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModals(); });
 if (location.hash === '#inquiry') openModal('inquiry'); // lets other pages link straight to the form
+if (location.hash === '#leave-a-review') openModal('review-form'); // direct link Georgia can share with clients
 
 // ---- Contact forms -> Google Sheet -> confirmation ----
 // Paste the Google Apps Script "Web app" URL here (see docs/contact-form-setup.md).

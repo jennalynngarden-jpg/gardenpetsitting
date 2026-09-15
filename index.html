@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Figtree:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=18">
+  <link rel="stylesheet" href="css/styles.css?v=19">
 </head>
 <body>
 
@@ -48,6 +48,7 @@
         <a href="services.html">Services</a>
         <a href="about.html">About Georgia</a>
         <a href="fosters.html">Foster dogs</a>
+        <a href="reviews.html" data-nav-reviews hidden>Reviews</a>
         <a class="btn btn--primary" href="#contact" data-open-modal="inquiry">Get in touch</a>
       </nav>
     </div>
@@ -163,6 +164,30 @@
       </div>
     </section>
 
+    <!-- Reviews carousel: filled in by js/reviews.js, hidden until at least 3 reviews are posted -->
+    <section class="section section--tinted reviews-section" id="reviews" data-reviews-section hidden>
+      <div class="container">
+        <div class="row-head">
+          <div>
+            <h2>What clients say</h2>
+            <p style="color: var(--color-text-secondary)">Real notes from the families Georgia looks after.</p>
+          </div>
+          <div class="row-head__controls">
+            <button class="round-btn" data-scroll="-1" aria-label="Scroll left"><svg class="icon" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
+            <button class="round-btn" data-scroll="1" aria-label="Scroll right"><svg class="icon"><use href="#i-arrow"/></svg></button>
+          </div>
+        </div>
+        <div class="card-row" data-card-row></div>
+        <div class="row-foot">
+          <div class="dots" data-dots aria-hidden="true"></div>
+          <div class="row-foot__actions">
+            <a class="btn btn--link" href="reviews.html">Read all reviews</a>
+            <button class="btn btn--primary" type="button" data-open-modal="review-form">Leave a review</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact -->
     <section class="section section--sage" id="contact">
       <div class="container">
@@ -229,6 +254,124 @@
       </div>
     </div>
   </footer>
+
+
+  <!-- Leave a review modal (bottom sheet on phones) -->
+  <div class="modal" data-modal="review-form" role="dialog" aria-modal="true" aria-labelledby="review-form-title">
+    <div class="modal__scrim" data-modal-close></div>
+    <div class="modal__card modal__card--wide">
+      <div class="modal__header">
+        <h3 id="review-form-title">Leave a review</h3>
+        <button class="modal__close" data-modal-close aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button>
+      </div>
+      <p style="color: var(--color-text-secondary)">Georgia reads every review before it goes up, so it may take a day or two to appear.</p>
+      <!-- Submissions go to the Google script URL set in js/reviews.js (see docs/reviews-setup.md) -->
+      <form class="form form--modal" action="#" method="post" data-review-form>
+        <div class="visually-hidden" aria-hidden="true">
+          <label for="r-website">Website</label>
+          <input id="r-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="form__row">
+          <div class="field">
+            <label for="r-name">Your name</label>
+            <input id="r-name" name="name" type="text" placeholder="Sam R." required>
+          </div>
+          <div class="field">
+            <label for="r-pet">Your pet’s name(s)</label>
+            <input id="r-pet" name="pet" type="text" placeholder="Mochi and Pip">
+          </div>
+        </div>
+        <div class="field">
+          <label id="r-service-label">Service you used</label>
+          <div class="select" data-select>
+            <input type="hidden" name="service" value="">
+            <button class="select__trigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="r-service-label">
+              <span class="select__value" data-placeholder="Choose a service">Choose a service</span>
+              <svg class="icon icon--sm"><use href="#i-chevron"/></svg>
+            </button>
+            <ul class="select__menu" role="listbox" tabindex="-1" hidden>
+              <li class="select__option" role="option" data-value="In-home visits">In-home visits</li>
+              <li class="select__option" role="option" data-value="Dog daycare">Dog daycare</li>
+              <li class="select__option" role="option" data-value="Both">Both</li>
+            </ul>
+          </div>
+        </div>
+        <div class="field">
+          <label id="r-rating-label">Your rating</label>
+          <input type="hidden" name="rating" value="">
+          <div class="rating-picker" data-rating-picker role="group" aria-labelledby="r-rating-label">
+            <button type="button" aria-label="1 star"><svg class="icon"><use href="#i-star"/></svg></button>
+            <button type="button" aria-label="2 stars"><svg class="icon"><use href="#i-star"/></svg></button>
+            <button type="button" aria-label="3 stars"><svg class="icon"><use href="#i-star"/></svg></button>
+            <button type="button" aria-label="4 stars"><svg class="icon"><use href="#i-star"/></svg></button>
+            <button type="button" aria-label="5 stars"><svg class="icon"><use href="#i-star"/></svg></button>
+            <span class="rating-picker__label" data-rating-label aria-live="polite"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label>Photos <span class="field__sub">Optional, up to 3. JPG, PNG or HEIC. Photos of your pet only, please.</span></label>
+          <input type="file" accept="image/*" multiple class="visually-hidden" tabindex="-1">
+          <div class="photo-tiles" data-photo-tiles>
+            <button class="photo-add" type="button" data-photo-add><span class="photo-add__plus">+</span>Add photo</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="r-review">Your review</label>
+          <textarea id="r-review" name="review" placeholder="How did it go?" required></textarea>
+        </div>
+        <div class="field">
+          <label for="r-email">Email <span class="field__sub">Never shown on the site</span></label>
+          <input id="r-email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+        <div class="modal__actions">
+          <button class="btn btn--link" type="button" data-modal-close>Cancel</button>
+          <button class="btn btn--primary" type="submit">Submit review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Review sent confirmation -->
+  <div class="modal" data-modal="review-sent" role="dialog" aria-modal="true" aria-labelledby="review-sent-title">
+    <div class="modal__scrim" data-modal-close></div>
+    <div class="modal__card">
+      <div class="modal__header">
+        <h3 id="review-sent-title">Thanks for your review</h3>
+        <button class="modal__close" data-modal-close aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button>
+      </div>
+      <p>It is on its way to Georgia. She reads every review before it is posted, so it may take a day or two to appear on the site.</p>
+      <div class="modal__actions">
+        <button class="btn btn--primary" data-modal-close>Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full review (opened by tapping a review card) -->
+  <div class="modal" data-modal="review" role="dialog" aria-modal="true" aria-labelledby="review-title">
+    <div class="modal__scrim" data-modal-close></div>
+    <div class="modal__card modal__card--wide review-detail">
+      <div class="modal__header">
+        <div class="review-detail__head">
+          <h3 id="review-title" data-review-name></h3>
+          <p class="body-small" style="color: var(--color-text-secondary)" data-review-meta></p>
+          <div data-review-stars></div>
+        </div>
+        <button class="modal__close" data-modal-close aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button>
+      </div>
+      <div class="gallery" data-review-gallery hidden>
+        <div class="gallery__main">
+          <img data-gallery-main src="" alt="Photo shared with this review">
+          <div class="gallery__controls">
+            <button class="gallery__arrow" type="button" data-gallery-prev aria-label="Previous photo"><svg class="icon" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
+            <span class="gallery__counter" data-gallery-counter>1 / 1</span>
+            <button class="gallery__arrow" type="button" data-gallery-next aria-label="Next photo"><svg class="icon"><use href="#i-arrow"/></svg></button>
+          </div>
+        </div>
+        <div class="gallery__thumbs"></div>
+      </div>
+      <p class="review-detail__text" data-review-text></p>
+    </div>
+  </div>
 
   <!-- Inquiry modal (opened by the header's Get in touch button) -->
   <div class="modal" data-modal="inquiry" role="dialog" aria-modal="true" aria-labelledby="inquiry-title">
@@ -300,6 +443,7 @@
     </div>
   </div>
 
-  <script src="js/main.js?v=18"></script>
+  <script src="js/main.js?v=19"></script>
+  <script src="js/reviews.js?v=19"></script>
 </body>
 </html>
