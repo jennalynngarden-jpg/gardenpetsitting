@@ -15,37 +15,7 @@ Every message sent through the website lands as a new row in a Google Sheet, and
 3. Change `NOTIFY_EMAIL` to Georgia's email address.
 4. Click the save icon.
 
-```javascript
-// Receives the website's contact form, saves it to this sheet, and emails Georgia.
-const NOTIFY_EMAIL = 'georgia@example.com';   // <- change this
-const SUBJECT = 'New message from the Garden Pet Sitting website';
-
-function doPost(e) {
-  const p = e.parameter;
-  if (p.website) return ok();                 // honeypot filled in = a bot; ignore silently
-
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-  sheet.appendRow([new Date(), p.name || '', p.email || '', p.phone || '', p.service || '', p.message || '', p.page || '']);
-
-  MailApp.sendEmail({
-    to: NOTIFY_EMAIL,
-    replyTo: p.email || NOTIFY_EMAIL,
-    subject: SUBJECT + (p.name ? ' from ' + p.name : ''),
-    body:
-      'Name: ' + (p.name || '') + '\n' +
-      'Email: ' + (p.email || '') + '\n' +
-      'Phone: ' + (p.phone || 'not given') + '\n' +
-      'Service: ' + (p.service || 'not chosen') + '\n\n' +
-      (p.message || '') + '\n\n' +
-      '— Sent from the website contact form. Reply to this email to answer them.'
-  });
-  return ok();
-}
-
-function ok() {
-  return ContentService.createTextOutput('ok');
-}
-```
+The full script now lives in `docs/contact-form-script.gs` (it builds the branded email with the "Text" button). Paste that whole file into the Apps Script editor.
 
 ## 3. Publish it
 
