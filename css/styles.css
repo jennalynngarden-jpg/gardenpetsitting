@@ -255,6 +255,7 @@ p { margin: 0; }
 .photo-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-lg); }
 .photo-strip img { width: 100%; aspect-ratio: 341 / 320; object-fit: cover; object-position: 50% 12%; border-radius: var(--radius-lg); }
 .featured { background: var(--color-bg-accent-soft); padding: clamp(40px, 5vw, 56px) 0; }
+.featured .carousel--story { justify-self: start; }
 
 .row-head { display: flex; justify-content: space-between; align-items: center; gap: var(--spacing-lg); margin-bottom: var(--spacing-lg); }
 .row-head h2 { margin-bottom: 6px; }
