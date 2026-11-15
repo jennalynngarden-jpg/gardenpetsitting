@@ -256,6 +256,9 @@ p { margin: 0; }
 .photo-strip img { width: 100%; aspect-ratio: 341 / 320; object-fit: cover; object-position: 50% 12%; border-radius: var(--radius-lg); }
 .featured { background: var(--color-bg-accent-soft); padding: clamp(40px, 5vw, 56px) 0; }
 .featured .carousel--story { justify-self: start; }
+.featured__title { display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-md); justify-self: stretch; }
+.featured__title h2 { margin: 0; }
+.featured__title .share { flex-wrap: nowrap; }
 
 .row-head { display: flex; justify-content: space-between; align-items: center; gap: var(--spacing-lg); margin-bottom: var(--spacing-lg); }
 .row-head h2 { margin-bottom: 6px; }
@@ -504,6 +507,7 @@ p { margin: 0; }
   .feature__photo, .feature--flip .feature__photo { order: -1; max-width: none; aspect-ratio: 342 / 220; justify-self: stretch; }
   .feature__photo--map { aspect-ratio: 3 / 2; }
   .feature__text .btn { width: 100%; justify-self: stretch; }
+  .featured .org-link { justify-self: center; }
   /* Service area: heading first, then the map, then the text */
   .feature--map .feature__text { display: contents; }
   .feature--map .feature__inner { gap: var(--spacing-md); }
