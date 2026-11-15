@@ -27,6 +27,7 @@ function notify(p) {
   var headline;
   if (service === 'In-home visits') headline = name + ' is asking about in-home visits';
   else if (service === 'Dog daycare') headline = name + ' is asking about dog daycare';
+  else if (service === 'Foster dog inquiry') headline = name + ' is asking about a foster dog';
   else if (service === 'Not sure yet') headline = name + ' is asking about pet care';
   else headline = name + ' sent a message';
 
